@@ -54,97 +54,97 @@ function rocplot(gt::Array{<:Real},scores::Array{<:Real})
 
 end
 
-# """
-#     standardize!(X)
-# Standardisation des colonnes de la matrice (ou vecteur) X.
-# ### Arguments
-# - `X` : Matrice des données.
-# ### Details
-# La fonction modifie directement l'argument d'entrée X.
-# ### Examples
-# \```
-#  julia> standardize!(X)
-# \```
-# """
-# function standardize!(X::Array{T,2} where T<:Real)
+"""
+    standardize!(X)
+Standardisation des colonnes de la matrice (ou vecteur) X.
+### Arguments
+- `X` : Matrice des données.
+### Details
+La fonction modifie directement l'argument d'entrée X.
+### Examples
+\```
+ julia> standardize!(X)
+\```
+"""
+function standardize2!(X::Array{T,2} where T<:Real)
 
-#     m = mean(X, dims=1)
-#     s = std(X, dims=1)
+    m = mean(X, dims=1)
+    s = std(X, dims=1)
 
-#     n, p = size(X)
+    n, p = size(X)
 
-#     for i=1:n
-#         for j=1:p
-#             X[i,j] = (X[i,j] - m[j]) / s[j]
-#         end
-#     end
+    for i=1:n
+        for j=1:p
+            X[i,j] = (X[i,j] - m[j]) / s[j]
+        end
+    end
 
-#     return X
+    return X
 
-# end
+end
 
-# function standardize!(X::Array{T,1} where T<:Real)
+function standardize2!(X::Array{T,1} where T<:Real)
 
-#     m = mean(X)
-#     s = std(X)
+    m = mean(X)
+    s = std(X)
 
-#     n = length(X)
+    n = length(X)
 
-#     for i=1:n
-#         X[i] = (X[i] - m) ./ s
-#     end
+    for i=1:n
+        X[i] = (X[i] - m) ./ s
+    end
 
-#     return X
+    return X
 
-# end
+end
 
-# """
-#     standardize(X)
-# Standardisation des colonnes de la matrice (ou vecteur) X.
-# ### Arguments
-# - `X` : Matrice des données.
-# ### Details
-# La fonction renvoie une copie de la matrice standardisée.
-# ### Examples
-# \```
-#  julia> Z = standardize(X)
-# \```
-# """
-# function standardize(X::Array{T,2} where T<:Real)
+"""
+    standardize(X)
+Standardisation des colonnes de la matrice (ou vecteur) X.
+### Arguments
+- `X` : Matrice des données.
+### Details
+La fonction renvoie une copie de la matrice standardisée.
+### Examples
+\```
+ julia> Z = standardize(X)
+\```
+"""
+function standardize2(X::Array{T,2} where T<:Real)
 
-#     m = mean(X, dims=1)
-#     s = std(X, dims=1)
+    m = mean(X, dims=1)
+    s = std(X, dims=1)
 
-#     n, p = size(X)
+    n, p = size(X)
 
-#     Z = zeros(n, p)
+    Z = zeros(n, p)
 
-#     for i=1:n
-#         for j=1:p
-#             Z[i,j] = (X[i,j] - m[j]) / s[j]
-#         end
-#     end
+    for i=1:n
+        for j=1:p
+            Z[i,j] = (X[i,j] - m[j]) / s[j]
+        end
+    end
 
-#     return Z
+    return Z
 
-# end
+end
 
-# function standardize(X::Array{T,1} where T<:Real)
+function standardize2(X::Array{T,1} where T<:Real)
 
-#     m = mean(X)
-#     s = std(X)
+    m = mean(X)
+    s = std(X)
 
-#     n = length(X)
+    n = length(X)
 
-#     Z = zeros(n)
+    Z = zeros(n)
 
-#     for i=1:n
-#         Z[i] = (X[i] - m) ./ s
-#     end
+    for i=1:n
+        Z[i] = (X[i] - m) ./ s
+    end
 
-#     return Z
+    return Z
 
-# end
+end
 
 function compute_VIF(structureMatrix::Array{T,2} where T<:Real)
 
